@@ -3,7 +3,7 @@
    Darslar ro'yxati va barcha 63 ta dars uchun
    Learncode.uz
    To'liq OQ (LIGHT) TEMA - Hech qanday qora fon yo'q
-   Version: 4.0 | Mobile left / Desktop center
+   Version: 5.0 | Hover dumaloq + Check bir qatorda
    ============================================ */
 
 :root {
@@ -355,9 +355,9 @@ li {
 }
 
 .group-title {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
     background: rgba(239, 246, 255, 0.3);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-dark);
     border-bottom: 1px solid var(--border-light);
@@ -374,7 +374,7 @@ li {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
     text-decoration: none;
     color: var(--text-body);
     border-bottom: 1px solid var(--border-light);
@@ -397,11 +397,12 @@ li {
     background: linear-gradient(90deg, var(--bg-white) 0%, var(--primary-bg) 100%);
 }
 
+/* Dars raqami - HAMMA UCHUN DUMALOQ */
 .lesson-num {
     width: 32px;
     height: 32px;
     background: var(--bg-gray-100);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -412,20 +413,38 @@ li {
     transition: all var(--transition-fast);
 }
 
+/* Hover - dumaloq ko'k */
 .lesson-item:hover .lesson-num {
-    background: var(--primary);
-    color: white;
+    background: var(--primary) !important;
+    color: white !important;
+    transform: scale(1.05);
 }
 
+/* Touch/active - bosganda */
+.lesson-item:active .lesson-num {
+    background: var(--primary-dark) !important;
+    color: white !important;
+    transform: scale(0.98);
+}
+
+/* Yakunlangan dars - yashil dumaloq */
 .lesson-item.completed .lesson-num {
-    background: var(--success);
-    color: white;
+    background: var(--success) !important;
+    color: white !important;
+    border-radius: var(--radius-full) !important;
 }
 
+/* Aralash test (5,10,15...) - default ko'k dumaloq */
 .lesson-item.mix-lesson .lesson-num {
-    background: var(--primary);
-    color: white;
-    border-radius: var(--radius-full);
+    background: var(--primary) !important;
+    color: white !important;
+    border-radius: var(--radius-full) !important;
+}
+
+/* Aralash test hover - biroz kattalashsin */
+.lesson-item.mix-lesson:hover .lesson-num {
+    background: var(--primary-dark) !important;
+    transform: scale(1.08);
 }
 
 .lesson-name {
@@ -436,6 +455,7 @@ li {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    line-height: 1.4;
 }
 
 .lesson-time {
@@ -443,14 +463,19 @@ li {
     font-size: 0.75rem;
     flex-shrink: 0;
     white-space: nowrap;
+    line-height: 1.4;
 }
 
+/* Check icon - bir qatorda, hech narsaga chiqmaydi */
 .lesson-check {
     color: var(--success);
     font-size: 1rem;
     opacity: 0;
     transition: opacity var(--transition-fast);
     flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    line-height: 1;
 }
 
 .lesson-item.completed .lesson-check {
@@ -461,8 +486,8 @@ li {
 .course-stats {
     display: flex;
     justify-content: space-around;
-    padding: var(--spacing-lg);
-    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
