@@ -148,10 +148,9 @@ function loadComments() {
     
     console.log('🔍 loadComments ishga tushdi');
     console.log('commentsList elementi:', commentsList);
-    console.log('commentsCount elementi:', commentsCount);
     
     if (!commentsList) {
-        console.error('❌ commentsList elementi topilmadi! HTML da id="commentsList" borligini tekshiring.');
+        console.error('❌ commentsList topilmadi!');
         return;
     }
     
@@ -161,10 +160,8 @@ function loadComments() {
     const commentsRef = ref(rtdb, `comments/${lessonKey}`);
     
     onValue(commentsRef, (snapshot) => {
-        console.log('✅ Firebase dan ma\'lumot keldi!');
+        console.log('📦 Firebase dan ma\'lumot keldi');
         console.log('Snapshot mavjudmi?', snapshot.exists());
-        
-        commentsList.innerHTML = '';
         
         if (!snapshot.exists()) {
             console.log('ℹ️ Izohlar yo\'q');
@@ -174,14 +171,21 @@ function loadComments() {
         }
         
         const comments = [];
-        snapshot.forEach(c => comments.push({ id: c.key, ...c.val() }));
+        snapshot.forEach(c => {
+            console.log('📝 Izoh:', c.val());
+            comments.push({ id: c.key, ...c.val() });
+        });
         comments.reverse();
         
-        console.log(`📊 Jami ${comments.length} ta izoh yuklandi:`, comments);
+        console.log(`✅ ${comments.length} ta izoh yuklandi`);
         
         if (commentsCount) commentsCount.textContent = `${comments.length} ta izoh`;
         
+        // Avvalgi kontentni tozalash
+        commentsList.innerHTML = '';
+        
         comments.forEach(c => {
+            console.log('➕ Izoh qo\'shilmoqda:', c.name, '-', c.text.substring(0, 20));
             const d = document.createElement('div');
             d.className = 'comment-item';
             d.innerHTML = `
@@ -202,7 +206,6 @@ function loadComments() {
         console.error('❌ Firebase xatolik:', error);
     });
 }
-
 function setupCommentForm() {
     const submitBtn = document.getElementById('submitComment'), nameInput = document.getElementById('commentName'), textInput = document.getElementById('commentText'), charCount = document.getElementById('charCount');
     if (!submitBtn) return;
