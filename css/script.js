@@ -34,20 +34,28 @@ function initTest() {
         // Darsga qarab to'g'ri javoblarni aniqlash
         let correctAnswers = {};
         
-        // 1-5 darslar uchun to'g'ri javoblar (script da)
+        // Barcha darslar uchun to'g'ri javoblar
         const answersMap = {
             '1': { 'q1': 'b', 'q2': 'b', 'q3': 'c' },
             '2': { 'q1': 'c', 'q2': 'b', 'q3': 'b' },
             '3': { 'q1': 'c', 'q2': 'b', 'q3': 'c' },
             '4': { 'q1': 'b', 'q2': 'd', 'q3': 'b' },
-            '5': { 'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'c', 'q5': 'd' }
+            '5': { 'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'c', 'q5': 'd' },
+            '6': { 'q1': 'b', 'q2': 'c', 'q3': 'a', 'q4': 'b' },
+            '7': { 'q1': 'b', 'q2': 'c', 'q3': 'a', 'q4': 'b' },
+            '8': { 'q1': 'b', 'q2': 'd', 'q3': 'c', 'q4': 'a' },
+            '9': { 'q1': 'b', 'q2': 'c', 'q3': 'a', 'q4': 'b' },
+            '10': { 'q1': 'b', 'q2': 'c', 'q3': 'b', 'q4': 'a', 'q5': 'c', 'q6': 'b', 'q7': 'd', 'q8': 'a', 'q9': 'c', 'q10': 'b' },
+            '11': { 'q1': 'c', 'q2': 'b', 'q3': 'b', 'q4': 'a' },
+            '12': { 'q1': 'c', 'q2': 'b', 'q3': 'd', 'q4': 'a' },
+            '13': { 'q1': 'b', 'q2': 'c', 'q3': 'd', 'q4': 'a' }
         };
         
-        // Agar dars 1-5 oralig'ida bo'lsa, tayyor javoblarni olish
+        // Agar dars answersMap da bo'lsa, tayyor javoblarni olish
         if (answersMap[lessonId]) {
             correctAnswers = answersMap[lessonId];
         } else {
-            // 6-darsdan boshlab HTML dan o'qish
+            // 14-darsdan boshlab HTML dan o'qish
             const answerScript = document.getElementById('testAnswers');
             if (answerScript) {
                 try {

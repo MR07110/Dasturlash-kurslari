@@ -567,27 +567,27 @@
         </div>
     </footer>
 
-    <script>
-        function loadProgress() {
-            const stored = localStorage.getItem('learncode_progress');
-            const progress = stored ? JSON.parse(stored) : { html: [], css: [], js: [], bootstrap: [] };
-            
-            const completed = progress.css || [];
-            const total = 63;
-            
-            document.getElementById('progressCount').textContent = completed.length;
-            document.getElementById('progressFill').style.width = (completed.length / total * 100) + '%';
-            
-            document.querySelectorAll('.lesson-item').forEach(item => {
-                const lessonNum = item.dataset.lesson;
-                if (completed.includes(lessonNum)) {
-                    item.classList.add('completed');
-                }
-            });
-        }
+<script>
+    function loadProgress() {
+        const stored = localStorage.getItem('learncode_progress');
+        const progress = stored ? JSON.parse(stored) : { html: [], css: [], js: [], bootstrap: [] };
         
-        loadProgress();
-        window.addEventListener('storage', loadProgress);
-    </script>
+        const completed = progress.css || [];
+        const total = 63;
+        
+        document.getElementById('progressCount').textContent = completed.length;
+        document.getElementById('progressFill').style.width = (completed.length / total * 100) + '%';
+        
+        document.querySelectorAll('.lesson-item').forEach(item => {
+            const lessonNum = item.dataset.lesson;
+            if (completed.includes(lessonNum)) {
+                item.classList.add('completed');
+            }
+        });
+    }
+    
+    loadProgress();
+    window.addEventListener('storage', loadProgress);
+</script>
 </body>
 </html>

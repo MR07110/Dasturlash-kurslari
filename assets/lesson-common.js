@@ -8,6 +8,9 @@ import { ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/fi
 
 window.LessonConfig = window.LessonConfig || { course: 'css', lessonId: '1', totalLessons: 63, youtubeWatchUrl: '#', lessonTitle: 'Dars' };
 
+// YAGONA STORAGE KALITI
+const STORAGE_KEY = 'learncode_progress';
+
 document.addEventListener('DOMContentLoaded', function() {
     initSidebar();
     initResources();
@@ -49,7 +52,7 @@ function initResources() {
             e.preventDefault();
             const lessonUrl = `${window.location.origin}/${LessonConfig.course}/${LessonConfig.lessonId}/`;
             copyToClipboard(lessonUrl);
-            showToast('Dars linki nusxalandi!', 'success');
+            showToast('🔗 Dars linki nusxalandi!', 'success');
         });
     }
     const youtubeBtn = document.getElementById('youtubeWatchBtn');
@@ -77,22 +80,21 @@ function initProgress() {
             this.innerHTML = '<i class="fas fa-check-circle"></i><span>Yakunlangan</span>';
             this.disabled = true;
             updateProgressDisplay();
-            showToast('Dars yakunlandi!', 'success');
+            showToast('✅ Dars yakunlandi!', 'success');
             if (parseInt(LessonConfig.lessonId) % 5 === 0) {
-                showToast(`${LessonConfig.lessonId}-dars! Aralash testni topshirishni unutmang!`, 'info');
+                showToast(`🎯 ${LessonConfig.lessonId}-dars! Aralash testni topshirishni unutmang!`, 'info');
             }
-            // Boshqa tablarni yangilash uchun storage event trigger qilish
             window.dispatchEvent(new Event('storage'));
         });
     }
 }
 
 function getProgress() {
-    const stored = localStorage.getItem('learncode_progress');
+    const stored = localStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : { html: [], css: [], js: [], bootstrap: [] };
 }
 
-function saveProgress(progress) { localStorage.setItem('learncode_progress', JSON.stringify(progress)); }
+function saveProgress(progress) { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
 
 function markLessonComplete() {
     const progress = getProgress();
@@ -141,30 +143,80 @@ async function addComment(name, text) {
 }
 
 function loadComments() {
-    const commentsList = document.getElementById('commentsList'), commentsCount = document.getElementById('commentsCount');
-    if (!commentsList) return;
+    const commentsList = document.getElementById('commentsList');
+    const commentsCount = document.getElementById('commentsCount');
+    
+    console.log('🔍 loadComments ishga tushdi');
+    console.log('commentsList elementi:', commentsList);
+    console.log('commentsCount elementi:', commentsCount);
+    
+    if (!commentsList) {
+        console.error('❌ commentsList elementi topilmadi! HTML da id="commentsList" borligini tekshiring.');
+        return;
+    }
+    
     const lessonKey = `${LessonConfig.course}-${LessonConfig.lessonId}`;
-    onValue(ref(rtdb, `comments/${lessonKey}`), (snapshot) => {
+    console.log('📌 Dars kaliti:', lessonKey);
+    
+    const commentsRef = ref(rtdb, `comments/${lessonKey}`);
+    
+    onValue(commentsRef, (snapshot) => {
+        console.log('✅ Firebase dan ma\'lumot keldi!');
+        console.log('Snapshot mavjudmi?', snapshot.exists());
+        
         commentsList.innerHTML = '';
+        
         if (!snapshot.exists()) {
+            console.log('ℹ️ Izohlar yo\'q');
             commentsList.innerHTML = `<div class="comments-empty"><i class="fas fa-comment-dots"></i><p>Hozircha izohlar yo'q.</p></div>`;
             if (commentsCount) commentsCount.textContent = '0 ta izoh';
             return;
         }
-        const comments = []; snapshot.forEach(c => comments.push({ id: c.key, ...c.val() })); comments.reverse();
+        
+        const comments = [];
+        snapshot.forEach(c => comments.push({ id: c.key, ...c.val() }));
+        comments.reverse();
+        
+        console.log(`📊 Jami ${comments.length} ta izoh yuklandi:`, comments);
+        
         if (commentsCount) commentsCount.textContent = `${comments.length} ta izoh`;
+        
         comments.forEach(c => {
-            const d = document.createElement('div'); d.className = 'comment-item';
-            d.innerHTML = `<div class="comment-avatar"><i class="fas fa-user-circle"></i></div><div class="comment-content"><div class="comment-header"><span class="comment-author">${escapeHtml(c.name)}</span><span class="comment-time">${getTimeAgo(c.timestamp)}</span></div><p class="comment-text">${escapeHtml(c.text)}</p></div>`;
+            const d = document.createElement('div');
+            d.className = 'comment-item';
+            d.innerHTML = `
+                <div class="comment-avatar"><i class="fas fa-user-circle"></i></div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-author">${escapeHtml(c.name)}</span>
+                        <span class="comment-time">${getTimeAgo(c.timestamp)}</span>
+                    </div>
+                    <p class="comment-text">${escapeHtml(c.text)}</p>
+                </div>
+            `;
             commentsList.appendChild(d);
         });
+        
+        console.log('✅ Izohlar DOM ga qo\'shildi. Elementlar soni:', commentsList.children.length);
+    }, (error) => {
+        console.error('❌ Firebase xatolik:', error);
     });
 }
 
 function setupCommentForm() {
     const submitBtn = document.getElementById('submitComment'), nameInput = document.getElementById('commentName'), textInput = document.getElementById('commentText'), charCount = document.getElementById('charCount');
     if (!submitBtn) return;
+    
     textInput?.addEventListener('input', function() { if (charCount) charCount.textContent = this.value.length; });
+    
+    // ENTER TUGMASI BILAN YUBORISH (Ctrl+Enter)
+    textInput?.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            e.preventDefault();
+            submitBtn.click();
+        }
+    });
+    
     submitBtn.addEventListener('click', async function() {
         const name = nameInput?.value.trim() || '', text = textInput?.value.trim() || '';
         if (!text) { showToast('Iltimos, fikringizni yozing!', 'warning'); return; }
@@ -172,7 +224,7 @@ function setupCommentForm() {
         submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
         if (await addComment(name || 'O\'quvchi', text)) {
             textInput.value = ''; if (charCount) charCount.textContent = '0';
-            showToast(' Izohingiz qo\'shildi!', 'success');
+            showToast('💬 Izohingiz qo\'shildi!', 'success');
             if (name) localStorage.setItem('commentName', name);
         } else showToast('Xatolik yuz berdi.', 'error');
         submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Yuborish';
@@ -181,7 +233,7 @@ function setupCommentForm() {
 }
 
 function escapeHtml(text) { const d = document.createElement('div'); d.textContent = text; return d.innerHTML; }
-function getTimeAgo(ts) { const m = Math.floor((Date.now() - ts) / 60000); if (m < 60) return `${m} daqiqa oldin`; const h = Math.floor(m / 60); if (h < 24) return `${h} soat oldin`; return `${Math.floor(h / 24)} kun oldin`; }
+function getTimeAgo(ts) { const m = Math.floor((Date.now() - ts) / 60000); if (m < 1) return 'Hozir'; if (m < 60) return `${m} daqiqa oldin`; const h = Math.floor(m / 60); if (h < 24) return `${h} soat oldin`; return `${Math.floor(h / 24)} kun oldin`; }
 
 function initNavigation() {
     const cur = parseInt(LessonConfig.lessonId);
@@ -213,4 +265,4 @@ function showToast(msg, type = 'info') {
 }
 
 window.LearncodeUz = { getProgress, saveProgress, markLessonComplete, isLessonCompleted, showToast };
-console.log('Lesson Common yuklandi - Learncode.uz');
+console.log('✅ Lesson Common yuklandi - Learncode.uz');
