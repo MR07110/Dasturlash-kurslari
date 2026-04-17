@@ -3,7 +3,7 @@
    Darslar ro'yxati va barcha 63 ta dars uchun
    Learncode.uz
    To'liq OQ (LIGHT) TEMA - Hech qanday qora fon yo'q
-   Version: 3.0 | 2000+ lines
+   Version: 4.0 | Mobile left / Desktop center
    ============================================ */
 
 :root {
@@ -362,8 +362,9 @@ li {
     color: var(--text-dark);
     border-bottom: 1px solid var(--border-light);
     margin: 0;
-    text-align: left; /* Har doim chapdan */
+    text-align: left;
 }
+
 .lesson-items {
     display: flex;
     flex-direction: column;
@@ -428,13 +429,13 @@ li {
 }
 
 .lesson-name {
-  flex: 1;
+    flex: 1;
     font-weight: 500;
     font-size: 0.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: left; /* Har doim chapdan */
+    text-align: left;
 }
 
 .lesson-time {
@@ -442,33 +443,6 @@ li {
     font-size: 0.75rem;
     flex-shrink: 0;
     white-space: nowrap;
-}
-
-.lesson-test {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    background: var(--bg-gray-100);
-    padding: 4px 8px;
-    border-radius: var(--radius-full);
-    flex-shrink: 0;
-    transition: all var(--transition-fast);
-}
-
-.lesson-test i {
-    font-size: 0.7rem;
-}
-
-.lesson-test span {
-    display: inline;
-}
-
-.lesson-item.mix-lesson .lesson-test {
-    background: var(--primary);
-    color: white;
-    font-weight: 500;
 }
 
 .lesson-check {
@@ -501,7 +475,7 @@ li {
 .stat-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2px;
 }
 
@@ -1867,6 +1841,40 @@ code[class*="language-"] {
     transform: scale(1.1);
 }
 
+/* ==================== TEXT ALIGN RESPONSIVE ==================== */
+/* Mobile default - chapga tekislash */
+.lesson-name,
+.group-title,
+.stat-item {
+    text-align: left;
+}
+
+.stat-item {
+    align-items: flex-start;
+}
+
+/* Desktop - markazga tekislash */
+@media (min-width: 769px) {
+    .intro-content {
+        text-align: center;
+    }
+    
+    .intro-text,
+    .intro-text h2,
+    .intro-text p {
+        text-align: center;
+    }
+    
+    .course-stats {
+        justify-content: center;
+    }
+    
+    .stat-item {
+        align-items: center;
+        text-align: center;
+    }
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 900px) {
     .lesson-grid {
@@ -1895,36 +1903,15 @@ code[class*="language-"] {
         font-size: 0.9rem;
     }
     
-   .intro-content {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-lg);
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--card-border);
-    box-shadow: var(--shadow-glass);
-}
-    /* Desktop da matn markazga */
-@media (min-width: 769px) {
     .intro-content {
-        text-align: center;
-    }
-   .intro-text {
-        text-align: center;
-    }
-}
-/* Mobile da matn chapga */
-@media (max-width: 768px) {
-    .intro-content {
+        flex-direction: column;
         text-align: left;
     }
+    
     .intro-text {
         text-align: left;
     }
-} 
+    
     .lesson-item {
         flex-wrap: wrap;
         padding: var(--spacing-xs) var(--spacing-sm);
@@ -1935,19 +1922,6 @@ code[class*="language-"] {
         order: 3;
         margin-left: 44px;
         font-size: 0.85rem;
-    }
-    
-    .lesson-test {
-        margin-left: 0;
-    }
-    
-    .lesson-test span {
-        display: none;
-    }
-    
-    .lesson-test {
-        padding: 4px;
-        min-width: 24px;
     }
     
     .analogy-content {
@@ -1997,29 +1971,11 @@ code[class*="language-"] {
         flex-direction: row;
         flex-wrap: wrap;
     }
-    .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-}
-
-/* Desktop da markazga */
-@media (min-width: 769px) {
-    .stat-item {
-        text-align: center;
-    }
-}
-
-/* Mobile da chapga */
-@media (max-width: 768px) {
-    .stat-item {
-        align-items: flex-start;
-        text-align: left;
-    }
-}
+    
     .stat-item {
         min-width: 60px;
+        align-items: flex-start;
+        text-align: left;
     }
     
     .video-info {
