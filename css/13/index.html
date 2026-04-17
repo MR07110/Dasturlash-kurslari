@@ -30,6 +30,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <header class="course-header">
@@ -109,7 +110,7 @@
                 <section class="lesson-section" id="adjacent-collapsing">
                     <h2><i class="fas fa-arrows-alt-v"></i> Qo'shni elementlarda margin collapsing</h2>
                     <p>Ketma-ket kelgan ikki elementning vertikal marginlari orasida margin collapsing yuz beradi. Natijada ular orasidagi masofa marginlarning yig'indisi emas, balki kattaroq margin bo'ladi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>.box1 {
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">.box1 {
     margin-bottom: 30px;
 }
 
@@ -125,7 +126,7 @@
                 <section class="lesson-section" id="parent-child-collapsing">
                     <h2><i class="fas fa-sitemap"></i> Ota-bola margin collapsing</h2>
                     <p>Agar ota elementning yuqori/past marginidan oldin hech qanday kontent (border, padding, matn) bo'lmasa, bola elementning margini ota elementdan "tashqariga chiqib" ketadi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>.parent {
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">.parent {
     background: #f0f9ff;
     /* border yoki padding yo'q */
 }
@@ -165,7 +166,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">Margin/Padding qiymatlar tartibi</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>/* 1 ta qiymat - hamma tomon */
+                    <div class="code-block"><div class="code-header"><span class="code-lang">Margin/Padding qiymatlar tartibi</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">/* 1 ta qiymat - hamma tomon */
 margin: 20px;
 
 /* 2 ta qiymat - yuqori/past, o'ng/chap */
@@ -229,7 +230,7 @@ margin: 10px 20px 15px 25px;</code></pre></div>
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>&lt;style&gt;
+                        <pre><code class="language-css">&lt;style&gt;
 .box1 { margin-bottom: 40px; background: #93c5fd; padding: 20px; }
 .box2 { margin-top: 30px; background: #6ee7b7; padding: 20px; }
 /* Oraliq 40px bo'ladi (30px collapsing bo'ladi) */
@@ -320,4 +321,7 @@ margin: 10px 20px 15px 25px;</code></pre></div>
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

@@ -30,6 +30,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <header class="course-header">
@@ -95,7 +96,7 @@
                 <section class="lesson-section" id="analyze-project">
                     <h2><i class="fas fa-search"></i> Mavjud loyihani tahlil qilish</h2>
                     <p>Dars davomida biz oldindan tayyorlangan HTML strukturaga ega bo'lgan "Natour" loyihasini CSS yordamida jonlantiramiz. Birinchi navbatda HTML struktura va mavjud klasslarni tahlil qilamiz.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">HTML strukturasi (qisqartirilgan)</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>&lt;header class="header"&gt;
+                    <div class="code-block"><div class="code-header"><span class="code-lang">HTML strukturasi (qisqartirilgan)</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">&lt;header class="header"&gt;
     &lt;div class="header__logo-box"&gt;...&lt;/div&gt;
     &lt;div class="header__text-box"&gt;
         &lt;h1 class="heading-primary"&gt;...&lt;/h1&gt;
@@ -117,7 +118,7 @@
                 <section class="lesson-section" id="reset-global">
                     <h2><i class="fas fa-globe"></i> Reset va global stillar</h2>
                     <p>Har qanday loyiha universal reset va global stillardan boshlanadi. Bu barcha brauzerlarda bir xil ko'rinishni ta'minlaydi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>/* Reset */
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">/* Reset */
 *,
 *::after,
 *::before {
@@ -145,7 +146,7 @@ body {
                 <section class="lesson-section" id="header-component">
                     <h2><i class="fas fa-heading"></i> Header komponentini stillash</h2>
                     <p>Header qismi uchun orqa fon rasmi, clip-path bilan kesilgan shakl, logotip va sarlavha stillarini yozamiz.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>.header {
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">.header {
     height: 95vh;
     background-image: linear-gradient(
         to right bottom,
@@ -177,7 +178,7 @@ body {
                 <section class="lesson-section" id="buttons-animations">
                     <h2><i class="fas fa-mouse"></i> Tugmalar va animatsiyalar</h2>
                     <p>Qayta ishlatiladigan tugma komponentini yaratamiz va unga oddiy animatsiya qo'shamiz.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>.btn:link,
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">.btn:link,
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -248,7 +249,7 @@ body {
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>/* Reset */
+                        <pre><code class="language-css">/* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { font-size: 62.5%; }
@@ -339,4 +340,7 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

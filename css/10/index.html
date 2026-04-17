@@ -28,6 +28,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <header class="course-header">
@@ -125,7 +126,7 @@
                 <section class="lesson-section" id="what-is-important">
                     <h2><i class="fas fa-exclamation-circle"></i> !important nima?</h2>
                     <p><code>!important</code> - bu maxsus CSS kalit so'zi bo'lib, u barcha specificity qoidalarini bekor qiladi va o'z qoidasini eng kuchli qiladi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>p { color: blue; }
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">p { color: blue; }
 p { color: red !important; } /* Bu g'alaba qiladi! */</code></pre></div>
                     <div class="warning-box"><i class="fas fa-exclamation-triangle"></i><strong>!important specificity zanjirini buzadi!</strong> Agar siz !important ishlatsangiz, keyinchalik bu stilni o'zgartirish uchun yana !important ishlatishingiz kerak bo'ladi.</div>
                 </section>
@@ -241,7 +242,7 @@ p { color: red !important; } /* Bu g'alaba qiladi! */</code></pre></div>
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>&lt;div class="card"&gt;&lt;h2 class="card-title"&gt;Sarlavha&lt;/h2&gt;&lt;/div&gt;
+                        <pre><code class="language-css">&lt;div class="card"&gt;&lt;h2 class="card-title"&gt;Sarlavha&lt;/h2&gt;&lt;/div&gt;
 &lt;div id="message-box" class="hidden"&gt;Yashirin xabar&lt;/div&gt;
 &lt;style&gt;.hidden { display: none !important; }&lt;/style&gt;</code></pre>
                     </div>
@@ -298,4 +299,7 @@ p { color: red !important; } /* Bu g'alaba qiladi! */</code></pre></div>
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

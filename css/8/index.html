@@ -38,6 +38,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <!-- ==================== HEADER ==================== -->
@@ -150,7 +151,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* div ichidagi barcha p elementlari */
+                        <pre><code class="language-css">/* div ichidagi barcha p elementlari */
 div p {
     color: #2563eb;
 }
@@ -166,7 +167,7 @@ div p {
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;div&gt;
+                        <pre><code class="language-css">&lt;div&gt;
     &lt;p&gt;Birinchi daraja - tanlanadi&lt;/p&gt;
     &lt;section&gt;
         &lt;p&gt;Ikkinchi daraja - tanlanadi&lt;/p&gt;
@@ -194,7 +195,7 @@ div p {
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* div ning faqat bevosita farzand p lari */
+                        <pre><code class="language-css">/* div ning faqat bevosita farzand p lari */
 div > p {
     font-weight: bold;
     color: #dc2626;
@@ -211,7 +212,7 @@ div > p {
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;div&gt;
+                        <pre><code class="language-css">&lt;div&gt;
     &lt;p&gt;Birinchi daraja - tanlanadi ✅&lt;/p&gt;
     &lt;section&gt;
         &lt;p&gt;Ikkinchi daraja - tanlanmaydi ❌&lt;/p&gt;
@@ -236,7 +237,7 @@ div > p {
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* h1 dan keyin darhol keladigan p */
+                        <pre><code class="language-css">/* h1 dan keyin darhol keladigan p */
 h1 + p {
     margin-top: 0;
     font-style: italic;
@@ -253,7 +254,7 @@ h1 + p {
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;h1&gt;Sarlavha&lt;/h1&gt;
+                        <pre><code class="language-css">&lt;h1&gt;Sarlavha&lt;/h1&gt;
 &lt;p&gt;Birinchi paragraf - tanlanadi ✅&lt;/p&gt;
 &lt;p&gt;Ikkinchi paragraf - tanlanmaydi ❌&lt;/p&gt;</code></pre>
                     </div>
@@ -270,7 +271,7 @@ h1 + p {
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* h1 dan keyin keladigan barcha p lar */
+                        <pre><code class="language-css">/* h1 dan keyin keladigan barcha p lar */
 h1 ~ p {
     color: #64748b;
 }
@@ -286,7 +287,7 @@ h1 ~ p {
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;h1&gt;Sarlavha&lt;/h1&gt;
+                        <pre><code class="language-css">&lt;h1&gt;Sarlavha&lt;/h1&gt;
 &lt;p&gt;Birinchi paragraf - tanlanadi ✅&lt;/p&gt;
 &lt;div&gt;Ajratuvchi&lt;/div&gt;
 &lt;p&gt;Ikkinchi paragraf - tanlanadi ✅&lt;/p&gt;</code></pre>
@@ -420,7 +421,7 @@ h1 ~ p {
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>/* 1. Descendant - barcha avlodlar */
+                        <pre><code class="language-css">/* 1. Descendant - barcha avlodlar */
 nav a {
     color: #10b981;
 }
@@ -439,7 +440,7 @@ h1 + p {
 h2 ~ p {
     color: #64748b;
 }</code></pre>
-                        <pre><code>&lt;nav&gt;
+                        <pre><code class="language-css">&lt;nav&gt;
     &lt;a href="#"&gt;Bosh sahifa&lt;/a&gt;
     &lt;a href="#"&gt;Biz haqimizda&lt;/a&gt;
     &lt;div&gt;
@@ -563,4 +564,7 @@ h2 ~ p {
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

@@ -38,6 +38,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <!-- ==================== HEADER ==================== -->
@@ -150,7 +151,7 @@
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;!-- Bir nechta klassga ega element --&gt;
+                        <pre><code class="language-css">&lt;!-- Bir nechta klassga ega element --&gt;
 &lt;button class="btn btn-primary btn-large"&gt;Yuborish&lt;/button&gt;
 
 &lt;div class="card shadow rounded"&gt;
@@ -163,7 +164,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Asosiy tugma stillari */
+                        <pre><code class="language-css">/* Asosiy tugma stillari */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -201,7 +202,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Ikkala klassga ham ega element */
+                        <pre><code class="language-css">/* Ikkala klassga ham ega element */
 .btn.primary {
     background: #3b82f6;
     color: white;
@@ -235,7 +236,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Faqat button elementidagi .primary klassini tanlaydi */
+                        <pre><code class="language-css">/* Faqat button elementidagi .primary klassini tanlaydi */
 button.primary {
     background: #3b82f6;
 }
@@ -264,7 +265,7 @@ p.highlight {
                             <span class="code-lang">BEM namunasi</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;!-- Block --&gt;
+                        <pre><code class="language-css">&lt;!-- Block --&gt;
 &lt;div class="card"&gt;
     &lt;!-- Element --&gt;
     &lt;h2 class="card__title"&gt;Sarlavha&lt;/h2&gt;
@@ -414,7 +415,7 @@ p.highlight {
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>&lt;!-- HTML --&gt;
+                        <pre><code class="language-css">&lt;!-- HTML --&gt;
 &lt;button class="btn btn-primary"&gt;Yuborish&lt;/button&gt;
 &lt;button class="btn btn-secondary btn-large"&gt;Bekor qilish&lt;/button&gt;
 &lt;a href="#" class="btn btn-primary"&gt;Havola tugma&lt;/a&gt;
@@ -569,4 +570,7 @@ button.primary {
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

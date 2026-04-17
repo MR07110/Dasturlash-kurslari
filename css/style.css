@@ -2,8 +2,8 @@
    CSS KURSI - UMUMIY STILLAR
    Darslar ro'yxati va barcha 63 ta dars uchun
    Learncode.uz
-   Glassmorphism + Mobile First + VS Code Theme
-   Version: 2.0 | 2000+ lines
+   To'liq OQ (LIGHT) TEMA - Hech qanday qora fon yo'q
+   Version: 3.0 | 2000+ lines
    ============================================ */
 
 :root {
@@ -31,14 +31,14 @@
     --info: #0ea5e9;
     --info-bg: #e0f2fe;
     
-    /* Matn ranglari */
+    /* Matn ranglari - barchasi to'q */
     --text-dark: #1e293b;
     --text-body: #334155;
     --text-muted: #64748b;
     --text-light: #94a3b8;
     --text-white: #ffffff;
     
-    /* Fon ranglari */
+    /* Fon ranglari - faqat oq va och kulrang */
     --bg-white: #ffffff;
     --bg-gray-50: #f8fafc;
     --bg-gray-100: #f1f5f9;
@@ -52,7 +52,7 @@
     --glass-blur: blur(12px);
     
     /* Chegara */
-    --border-light: rgba(226, 232, 240, 0.5);
+    --border-light: rgba(226, 232, 240, 0.8);
     --border-medium: #cbd5e1;
     
     /* Soyalar */
@@ -309,10 +309,12 @@ li {
 
 .intro-text h2 {
     margin-bottom: var(--spacing-xs);
+    color: var(--text-dark);
 }
 
 .intro-text p {
     margin: 0;
+    color: var(--text-body);
 }
 
 /* ==================== PROGRESS BAR ==================== */
@@ -360,8 +362,8 @@ li {
     color: var(--text-dark);
     border-bottom: 1px solid var(--border-light);
     margin: 0;
+    text-align: left; /* Har doim chapdan */
 }
-
 .lesson-items {
     display: flex;
     flex-direction: column;
@@ -426,12 +428,13 @@ li {
 }
 
 .lesson-name {
-    flex: 1;
+  flex: 1;
     font-weight: 500;
     font-size: 0.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left; /* Har doim chapdan */
 }
 
 .lesson-time {
@@ -444,14 +447,22 @@ li {
 .lesson-test {
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
     color: var(--text-muted);
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     background: var(--bg-gray-100);
-    padding: 2px 6px;
+    padding: 4px 8px;
     border-radius: var(--radius-full);
     flex-shrink: 0;
-    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.lesson-test i {
+    font-size: 0.7rem;
+}
+
+.lesson-test span {
+    display: inline;
 }
 
 .lesson-item.mix-lesson .lesson-test {
@@ -676,6 +687,7 @@ li {
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     font-size: 0.9rem;
+    color: var(--text-body);
 }
 
 .info-box {
@@ -701,6 +713,11 @@ li {
 .info-box strong, .warning-box strong, .tip-box strong {
     display: block;
     margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
+.info-box p, .warning-box p, .tip-box p {
+    color: var(--text-body);
 }
 
 /* ==================== MASLAHAT BLOKI ==================== */
@@ -727,6 +744,7 @@ li {
 .advice-header h4 {
     margin: 0;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .advice-content {
@@ -740,6 +758,7 @@ li {
     align-items: flex-start;
     gap: var(--spacing-sm);
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .advice-item i {
@@ -768,6 +787,7 @@ li {
 
 .badge.tip {
     background: var(--warning);
+    color: var(--text-dark);
 }
 
 /* ==================== ANALOGIYA BLOKI ==================== */
@@ -787,6 +807,7 @@ li {
     gap: var(--spacing-sm);
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
 }
 
 .analogy-content {
@@ -830,6 +851,7 @@ li {
 
 .analogy-text {
     font-size: 0.8rem;
+    color: var(--text-body);
 }
 
 .analogy-arrow {
@@ -877,6 +899,7 @@ li {
     display: block;
     margin-bottom: 2px;
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .step-desc p {
@@ -918,6 +941,7 @@ li {
 .feature-card h4 {
     font-size: 0.9rem;
     margin-bottom: 2px;
+    color: var(--text-dark);
 }
 
 .feature-card p {
@@ -997,11 +1021,13 @@ li {
 .timeline-content h4 {
     margin-bottom: 2px;
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .timeline-content p {
     margin-bottom: var(--spacing-xs);
     font-size: 0.8rem;
+    color: var(--text-body);
 }
 
 .timeline-badge {
@@ -1036,6 +1062,7 @@ li {
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .browser-icons {
@@ -1106,6 +1133,7 @@ li {
     background: var(--bg-gray-50);
     border-radius: var(--radius-md);
     font-size: 0.8rem;
+    color: var(--text-body);
 }
 
 .project-feature i {
@@ -1123,13 +1151,15 @@ li {
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .folder-tree {
-    background: #1e1e1e;
+    background: #f8fafc !important;
     border-radius: var(--radius-md);
     padding: var(--spacing-sm);
     overflow-x: auto;
+    border: 1px solid var(--border-light);
 }
 
 .folder-tree pre {
@@ -1137,8 +1167,8 @@ li {
 }
 
 .folder-tree code {
-    color: #d4d4d4;
-    background: transparent;
+    color: #1e293b !important;
+    background: transparent !important;
     padding: 0;
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -1147,7 +1177,7 @@ li {
 
 /* ==================== VS CODE USLUBIDAGI KOD BLOKI (OQ FON) ==================== */
 .code-block {
-    background: #ffffff;
+    background: #ffffff !important;
     border-radius: var(--radius-md);
     margin: var(--spacing-md) 0;
     overflow: hidden;
@@ -1160,14 +1190,14 @@ li {
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-xs) var(--spacing-md);
-    background: #f3f4f6;
+    background: #f3f4f6 !important;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .code-lang {
     font-size: 0.7rem;
     font-weight: 600;
-    color: #6b7280;
+    color: #374151 !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -1177,7 +1207,7 @@ li {
     background: transparent;
     border: 1px solid #d1d5db;
     border-radius: var(--radius-xs);
-    color: #6b7280;
+    color: #374151 !important;
     font-size: 0.7rem;
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -1188,36 +1218,35 @@ li {
 
 .copy-btn:hover {
     background: #e5e7eb;
-    color: #374151;
+    color: #1f2937 !important;
 }
 
 .code-block pre {
-    margin: 0;
-    padding: var(--spacing-md);
+    margin: 0 !important;
+    padding: var(--spacing-md) !important;
     overflow-x: auto;
-    background: #ffffff;
+    background: #ffffff !important;
 }
 
 .code-block code {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    line-height: 1.6;
-    color: #24292e;
-    background: transparent;
-    padding: 0;
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+    color: #24292e !important;
+    background: transparent !important;
+    padding: 0 !important;
 }
 
-/* VS Code sintaksis ranglari */
-.code-block code .keyword { color: #d73a49; font-weight: 600; }
-.code-block code .selector { color: #6f42c1; }
-.code-block code .property { color: #005cc5; }
-.code-block code .value { color: #032f62; }
-.code-block code .comment { color: #6a737d; font-style: italic; }
-.code-block code .string { color: #032f62; }
-.code-block code .number { color: #005cc5; }
-.code-block code .function { color: #6f42c1; }
-.code-block code .tag { color: #22863a; }
-.code-block code .attr { color: #6f42c1; }
+/* Prism.js bilan ishlaganda */
+pre[class*="language-"] {
+    background: #f5f2f0 !important;
+    margin: 0 !important;
+}
+
+code[class*="language-"] {
+    color: #24292e !important;
+    text-shadow: none !important;
+}
 
 /* ==================== TEST BLOKI ==================== */
 .test-block {
@@ -1245,6 +1274,7 @@ li {
     gap: var(--spacing-sm);
     margin: 0;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .test-badge {
@@ -1306,6 +1336,7 @@ li {
     cursor: pointer;
     transition: all var(--transition-fast);
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .option:hover {
@@ -1322,6 +1353,7 @@ li {
 .option label {
     cursor: pointer;
     flex: 1;
+    color: var(--text-body);
 }
 
 .test-submit {
@@ -1397,10 +1429,12 @@ li {
 .practice-header h3 {
     margin: 0;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .task-description {
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .btn-solution {
@@ -1428,6 +1462,7 @@ li {
     border-radius: var(--radius-md);
     display: none;
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .solution-panel.show {
@@ -1449,6 +1484,7 @@ li {
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .lesson-summary ul {
@@ -1463,6 +1499,7 @@ li {
     align-items: center;
     gap: var(--spacing-sm);
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .lesson-summary li i {
@@ -1489,6 +1526,7 @@ li {
     gap: var(--spacing-sm);
     margin: 0;
     font-size: 1.25rem;
+    color: var(--text-dark);
 }
 
 .comments-count {
@@ -1534,6 +1572,7 @@ li {
     font-family: var(--font-primary);
     font-size: 0.8rem;
     margin-bottom: var(--spacing-xs);
+    color: var(--text-body);
 }
 
 .comment-input-wrapper textarea {
@@ -1608,6 +1647,7 @@ li {
 .comment-text {
     margin: 0;
     font-size: 0.8rem;
+    color: var(--text-body);
 }
 
 /* ==================== NAVIGATSIYA ==================== */
@@ -1694,6 +1734,7 @@ li {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
+    color: var(--text-dark);
 }
 
 .sidebar-outline {
@@ -1757,6 +1798,7 @@ li {
     transition: transform 0.3s ease;
     z-index: 1000;
     font-size: 0.85rem;
+    color: var(--text-body);
 }
 
 .toast-notification.show {
@@ -1853,11 +1895,36 @@ li {
         font-size: 0.9rem;
     }
     
+   .intro-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-glass);
+}
+    /* Desktop da matn markazga */
+@media (min-width: 769px) {
     .intro-content {
-        flex-direction: column;
         text-align: center;
     }
-    
+   .intro-text {
+        text-align: center;
+    }
+}
+/* Mobile da matn chapga */
+@media (max-width: 768px) {
+    .intro-content {
+        text-align: left;
+    }
+    .intro-text {
+        text-align: left;
+    }
+} 
     .lesson-item {
         flex-wrap: wrap;
         padding: var(--spacing-xs) var(--spacing-sm);
@@ -1871,7 +1938,16 @@ li {
     }
     
     .lesson-test {
-        margin-left: 44px;
+        margin-left: 0;
+    }
+    
+    .lesson-test span {
+        display: none;
+    }
+    
+    .lesson-test {
+        padding: 4px;
+        min-width: 24px;
     }
     
     .analogy-content {
@@ -1921,7 +1997,27 @@ li {
         flex-direction: row;
         flex-wrap: wrap;
     }
-    
+    .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Desktop da markazga */
+@media (min-width: 769px) {
+    .stat-item {
+        text-align: center;
+    }
+}
+
+/* Mobile da chapga */
+@media (max-width: 768px) {
+    .stat-item {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
     .stat-item {
         min-width: 60px;
     }

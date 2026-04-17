@@ -38,6 +38,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <!-- ==================== HEADER ==================== -->
@@ -150,7 +151,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Ota elementga berilgan rang */
+                        <pre><code class="language-css">/* Ota elementga berilgan rang */
 .parent {
     color: #2563eb;
     font-family: 'Segoe UI', sans-serif;
@@ -162,7 +163,7 @@
                             <span class="code-lang">HTML</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>&lt;div class="parent"&gt;
+                        <pre><code class="language-css">&lt;div class="parent"&gt;
     Bu matn ko'k rangda
     &lt;p&gt;Bu paragraf ham ko'k rangda (meros oldi)&lt;/p&gt;
     &lt;span&gt;Bu span ham ko'k rangda (meros oldi)&lt;/span&gt;
@@ -325,7 +326,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Meros bo'lmaydigan xususiyatni majburan meros qilish */
+                        <pre><code class="language-css">/* Meros bo'lmaydigan xususiyatni majburan meros qilish */
 .child {
     border: inherit;  /* Ota elementning borderini oladi */
 }
@@ -348,7 +349,7 @@
                             <span class="code-lang">CSS</span>
                             <button class="copy-btn"><i class="far fa-copy"></i> Nusxalash</button>
                         </div>
-                        <pre><code>/* Butun sayt bo'ylab bir xil shrift va rang */
+                        <pre><code class="language-css">/* Butun sayt bo'ylab bir xil shrift va rang */
 body {
     font-family: 'Inter', sans-serif;
     color: #1e293b;
@@ -503,7 +504,7 @@ body {
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>&lt;!DOCTYPE html&gt;
+                        <pre><code class="language-css">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;style&gt;
@@ -665,4 +666,7 @@ body {
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

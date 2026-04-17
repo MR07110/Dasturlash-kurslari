@@ -30,6 +30,7 @@
         }
     </script>
 </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 <body>
     
     <header class="course-header">
@@ -112,7 +113,7 @@
                 <section class="lesson-section" id="content">
                     <h2><i class="fas fa-align-center"></i> Content (Mazmun)</h2>
                     <p><strong>Content</strong> - bu elementning asosiy mazmuni: matn, rasm, video yoki boshqa HTML elementlari. Content o'lchamlarini <code>width</code> va <code>height</code> xususiyatlari bilan belgilash mumkin.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>.box {
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">.box {
     width: 300px;
     height: 200px;
     background-color: #93c5fd;
@@ -123,7 +124,7 @@
                 <section class="lesson-section" id="padding">
                     <h2><i class="fas fa-vector-square"></i> Padding (Ichki bo'shliq)</h2>
                     <p><strong>Padding</strong> - bu content va border orasidagi bo'shliq. Padding element ichidagi mazmunni chegaradan uzoqlashtiradi. Padding qiymati elementning umumiy o'lchamiga qo'shiladi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>/* Hamma tomon uchun bir xil */
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">/* Hamma tomon uchun bir xil */
 .box {
     padding: 20px;
 }
@@ -147,7 +148,7 @@
                 <section class="lesson-section" id="border">
                     <h2><i class="fas fa-border-all"></i> Border (Chegara)</h2>
                     <p><strong>Border</strong> - bu padding va margin orasidagi chegara chizig'i. Border uchta xususiyatdan iborat: qalinlik (<code>border-width</code>), uslub (<code>border-style</code>) va rang (<code>border-color</code>).</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>/* Qisqa yozuv */
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">/* Qisqa yozuv */
 .box {
     border: 2px solid #3b82f6;
 }
@@ -170,7 +171,7 @@
                 <section class="lesson-section" id="margin">
                     <h2><i class="fas fa-arrows-alt"></i> Margin (Tashqi bo'shliq)</h2>
                     <p><strong>Margin</strong> - bu elementning tashqi bo'shlig'i, ya'ni border dan tashqaridagi bo'shliq. Margin elementlar orasidagi masofani boshqaradi.</p>
-                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code>/* Hamma tomon uchun bir xil */
+                    <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span><button class="copy-btn"><i class="far fa-copy"></i></button></div><pre><code class="language-css">/* Hamma tomon uchun bir xil */
 .box {
     margin: 20px;
 }
@@ -264,7 +265,7 @@
                     <button class="btn-solution" id="showSolution">Yechimni ko'rish</button>
                     <div class="solution-panel" id="solutionPanel">
                         <h4>📝 Namunaviy yechim:</h4>
-                        <pre><code>&lt;div class="card"&gt;
+                        <pre><code class="language-css">&lt;div class="card"&gt;
     &lt;img src="image.jpg" alt="Rasm" style="width: 100%; border-radius: 8px;"&gt;
     &lt;h3&gt;Karta sarlavhasi&lt;/h3&gt;
     &lt;p&gt;Karta ichidagi qisqacha matn.&lt;/p&gt;
@@ -356,4 +357,7 @@
     <script type="module" src="../../assets/lesson-common.js"></script>
     <script src="../script.js"></script>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 </html>

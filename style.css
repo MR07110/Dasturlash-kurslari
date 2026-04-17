@@ -643,3 +643,22 @@ body::before {
     background: var(--primary);
     color: white;
 }
+/* Prism.js kod bloki uchun qo'shimcha stillar */
+.code-block pre[class*="language-"] {
+    margin: 0 !important;
+    padding: var(--spacing-md) !important;
+    background: #f5f2f0 !important;
+    border-radius: 0 !important;
+}
+
+.code-block code[class*="language-"] {
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+    background: transparent !important;
+}
+
+/* Nusxalash tugmasi hover */
+.copy-btn {
+    transition: all var(--transition-fast);
+}
