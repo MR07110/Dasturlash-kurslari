@@ -1,0 +1,211 @@
+/* ============================================
+   CSS KURS - 2-DARS: CSS HAQIDA. KURS LOYIHASI
+   Darsga xos maxsus stillar
+   ============================================ */
+
+/* Timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.timeline-item {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+}
+
+.timeline-year {
+    min-width: 80px;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-content h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark);
+}
+
+.timeline-content p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.timeline-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--primary-bg);
+    color: var(--primary);
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.timeline-badge.success {
+    background: var(--success-bg);
+    color: var(--success-dark);
+}
+
+/* Brauzer muvofiqligi */
+.browser-support {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+}
+
+.browser-support h4 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.browser-icons {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.browser-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.browser-icon i {
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.support-table {
+    margin-top: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.support-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-white);
+}
+
+.support-row.header {
+    background: var(--primary-bg);
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.support-row:not(.header) {
+    border-top: 1px solid var(--border-light);
+}
+
+.support-row i {
+    color: var(--success);
+}
+
+/* Loyiha xususiyatlari */
+.project-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+}
+
+.project-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--bg-gray-50);
+    border-radius: var(--radius-md);
+}
+
+.project-feature i {
+    color: var(--success);
+}
+
+/* Papka tuzilmasi */
+.folder-structure {
+    margin: var(--spacing-lg) 0;
+}
+
+.folder-structure h4 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.folder-tree {
+    background: #1e1e1e;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    overflow-x: auto;
+}
+
+.folder-tree pre {
+    margin: 0;
+}
+
+.folder-tree code {
+    color: #d4d4d4;
+    background: transparent;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .timeline-year {
+        min-width: auto;
+    }
+    
+    .browser-icons {
+        flex-wrap: wrap;
+    }
+    
+    .support-row {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        font-size: 0.8rem;
+        padding: var(--spacing-xs);
+    }
+    
+    .project-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .support-row {
+        font-size: 0.7rem;
+    }
+}
