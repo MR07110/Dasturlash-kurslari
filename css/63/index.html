@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>63-Dars: Yakuniy tahlil va kurs yakuni | CSS Kurs</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../icons/learncode_favicon.svg">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js - grafiklar uchun -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Umumiy CSS -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Lesson Config -->
+    <script type="application/json" id="lessonConfig">
+        {
+            "course": "css",
+            "lessonId": "63",
+            "totalLessons": 63,
+            "youtubeWatchUrl": "https://www.youtube.com/watch?v=lf1B94_gRkY",
+            "lessonTitle": "Loyihani yakunlash. Kurs yakuni"
+        }
+    </script>
+    
+    <style>
+        /* Tahlil uchun maxsus stillar */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        
+        .analysis-card {
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .analysis-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .analysis-card h3 i {
+            color: #3b82f6;
+            font-size: 24px;
+        }
+        
+        .progress-bar-container {
+            margin: 16px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .progress-track {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 4px 4px 4px 0;
+        }
+        
+        .skill-excellent { background: #d1fae5; color: #059669; }
+        .skill-good { background: #dbeafe; color: #2563eb; }
+        .skill-need-practice { background: #fef3c7; color: #d97706; }
+        .skill-not-started { background: #fee2e2; color: #dc2626; }
+        
+        .recommendation-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .recommendation-icon {
+            width: 48px;
+            height: 48px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .recommendation-content {
+            flex: 1;
+        }
+        
+        .recommendation-content h4 {
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+        
+        .recommendation-content p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .stat-box.green {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .stat-box.orange {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .stat-box.purple {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .certificate-preview {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px dashed #d97706;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin: 32px 0;
+        }
+        
+        .certificate-preview h2 {
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        
+        .certificate-preview p {
+            color: #78350f;
+            margin-bottom: 20px;
+        }
+        
+        .btn-certificate {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-certificate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #f8fafc, #e0e7ff);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .next-steps h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .roadmap-item:last-child {
+            border-bottom: none;
+        }
+        
+        .roadmap-icon {
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .roadmap-icon.done {
+            background: #10b981;
+        }
+        
+        .roadmap-content {
+            flex: 1;
+        }
+        
+        .roadmap-content h4 {
+            margin-bottom: 4px;
+        }
+        
+        .roadmap-content p {
+            margin: 0;
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .roadmap-status {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== HEADER ==================== -->
+    <header class="course-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../" class="back-btn">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Darslar ro'yxati</span>
+                </a>
+                
+                <div class="course-title-header">
+                    <img src="../../icons/css3.svg" alt="CSS">
+                    <h1>63-Dars: Yakuniy tahlil va kurs yakuni</h1>
+                </div>
+                
+                <div class="progress-info">
+                    <i class="fas fa-trophy" style="color: #f59e0b;"></i> Final
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="container">
+        <div class="lesson-grid">
+            
+            <!-- Asosiy kontent -->
+            <div class="lesson-content">
+                
+                <!-- Video -->
+                <div class="video-wrapper">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/lf1B94_gRkY" 
+                            title="CSS | 63. Loyihani yakunlash. Kurs yakuni"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-title"><i class="fab fa-youtube"></i> CSS | 63. Loyihani yakunlash. Kurs yakuni</span>
+                        <span class="video-duration"><i class="far fa-clock"></i> Yakuniy dars</span>
+                    </div>
+                </div>
+                
+                <!-- Tabriklash -->
+                <div class="lesson-header">
+                    <h1>🎉 Tabriklaymiz! Siz CSS kursini yakunladingiz!</h1>
+                    <div class="lesson-meta">
+                        <span><i class="fas fa-calendar-check"></i> 63 ta dars</span>
+                        <span><i class="fas fa-clock"></i> 40+ soat</span>
+                        <span><i class="fas fa-project-diagram"></i> Natour loyihasi</span>
+                    </div>
+                </div>
+                
+                <!-- Kimlar uchun? -->
+                <div class="info-box">
+                    <i class="fas fa-chart-line"></i>
+                    <strong>Bu sahifada nimalarni ko'rasiz?</strong>
+                    <p>Bu sahifa sizning localStorage da saqlangan darslar tarixingiz asosida <strong>avtomatik tahlil</strong> qiladi. Qaysi mavzularni yaxshi o'zlashtirgansiz, qaysilarini takrorlash kerak, va keyingi qadamlar uchun shaxsiy tavsiyalar olasiz. Bu xuddi AI tahlil kabi ishlaydi!</p>
+                </div>
+                
+                <!-- ==================== STATISTIKA ==================== -->
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number" id="completedLessons">0</div>
+                        <div class="stat-label">Yakunlangan darslar</div>
+                    </div>
+                    <div class="stat-box green">
+                        <div class="stat-number" id="progressPercent">0%</div>
+                        <div class="stat-label">Umumiy progress</div>
+                    </div>
+                    <div class="stat-box orange">
+                        <div class="stat-number" id="avgScore">-</div>
+                        <div class="stat-label">O'rtacha test ball</div>
+                    </div>
+                    <div class="stat-box purple">
+                        <div class="stat-number" id="skillLevel">Boshlang'ich</div>
+                        <div class="stat-label">Sizning darajangiz</div>
+                    </div>
+                </div>
+                
+                <!-- ==================== MAVZULAR BO'YICHA TAHLIL ==================== -->
+                <section class="lesson-section">
+                    <h2><i class="fas fa-chart-bar"></i> Mavzular bo'yicha o'zlashtirish darajasi</h2>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-layer-group"></i> CSS Asoslari (1-10)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>Selektorlar, Specificity, Inheritance</span>
+                                    <span id="basicsScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="basicsFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="basicsSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-cube"></i> Box Model va Display (11-20)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>Margin, Padding, Display, Positioning</span>
+                                    <span id="boxModelScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="boxModelFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="boxModelSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-image"></i> Background va Rasmlar (21-30)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>Background, Images, Gradient, Filter</span>
+                                    <span id="bgImagesScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="bgImagesFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="bgImagesSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-ruler"></i> Units va RWD (31-43)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>px, %, em, rem, vh, vw, Media Queries</span>
+                                    <span id="unitsScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="unitsFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="unitsSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-font"></i> Fontlar (44-48)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>Google Fonts, @font-face, Font xossalari</span>
+                                    <span id="fontsScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="fontsFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="fontsSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-film"></i> Advanced CSS (49-54)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>Transforms, Transitions, Animations</span>
+                                    <span id="advancedScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="advancedFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="advancedSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-arrows-alt"></i> Flexbox (55-60)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>display: flex, justify-content, align-items</span>
+                                    <span id="flexboxScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="flexboxFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="flexboxSkills"></div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-th"></i> Grid va Best Practices (61-62)</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">
+                                    <span>CSS Grid, BEM, Accessibility</span>
+                                    <span id="gridScore">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="gridFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div id="gridSkills"></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ==================== SHAXSIY TAVSIYALAR ==================== -->
+                <section class="lesson-section">
+                    <h2><i class="fas fa-lightbulb"></i> Siz uchun shaxsiy tavsiyalar</h2>
+                    
+                    <div id="recommendations">
+                        <!-- JavaScript orqali to'ldiriladi -->
+                    </div>
+                </section>
+                
+                <!-- ==================== KEYINGI QADAMLAR ==================== -->
+                <section class="lesson-section">
+                    <h2><i class="fas fa-road"></i> Keyingi qadamlar - O'rganish yo'li</h2>
+                    
+                    <div class="next-steps">
+                        <h3><i class="fas fa-map-signs"></i> Sizning yo'l xaritangiz</h3>
+                        
+                        <div class="roadmap-item">
+                            <div class="roadmap-icon done">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="roadmap-content">
+                                <h4>✅ HTML Kursi (30 dars)</h4>
+                                <p>Dasturlash asoslari - yakunlangan deb hisoblanadi</p>
+                            </div>
+                            <div class="roadmap-status">Yakunlangan</div>
+                        </div>
+                        
+                        <div class="roadmap-item">
+                            <div class="roadmap-icon done">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="roadmap-content">
+                                <h4>✅ CSS Kursi (63 dars)</h4>
+                                <p>Hozirgi kurs - siz hozir shu yerdasiz!</p>
+                            </div>
+                            <div class="roadmap-status">Bugun yakunlandi! 🎉</div>
+                        </div>
+                        
+                        <div class="roadmap-item">
+                            <div class="roadmap-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="roadmap-content">
+                                <h4>🎯 JavaScript Kursi (50 dars)</h4>
+                                <p>Keyingi mantiqiy qadam - dasturlash tilini o'rganish</p>
+                            </div>
+                            <div class="roadmap-status">Tavsiya etiladi</div>
+                        </div>
+                        
+                        <div class="roadmap-item">
+                            <div class="roadmap-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="roadmap-content">
+                                <h4>🎨 Bootstrap Kursi (20 dars)</h4>
+                                <p>Tez prototiplash uchun CSS framework</p>
+                            </div>
+                            <div class="roadmap-status">JavaScript dan keyin</div>
+                        </div>
+                        
+                        <div class="roadmap-item">
+                            <div class="roadmap-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="roadmap-content">
+                                <h4>⚛️ React yoki Vue</h4>
+                                <p>Zamonaviy frontend frameworklar</p>
+                            </div>
+                            <div class="roadmap-status">JavaScript dan keyin</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ==================== SERTIFIKAT ==================== -->
+                <section class="lesson-section">
+                    <h2><i class="fas fa-certificate"></i> Sertifikat</h2>
+                    
+                    <div class="certificate-preview">
+                        <i class="fas fa-trophy" style="font-size: 48px; color: #d97706; margin-bottom: 16px;"></i>
+                        <h2>CSS To'liq Kurs yakunlandi!</h2>
+                        <p>Siz 63 ta darsni muvaffaqiyatli yakunladingiz va zamonaviy CSS bo'yicha professional bilimlarga ega bo'ldingiz.</p>
+                        <button class="btn-certificate" id="generateCertificate">
+                            <i class="fas fa-download"></i> Sertifikatni yuklab olish
+                        </button>
+                        <p style="font-size: 12px; margin-top: 16px; opacity: 0.7;">
+                            *Sertifikat sizning yutug'ingizni tasdiqlaydi. Portfolio va LinkedIn uchun foydalaning.
+                        </p>
+                    </div>
+                </section>
+                
+                <!-- ==================== IZOHLAR ==================== -->
+                <section class="comments-section" id="comments">
+                    <div class="comments-header">
+                        <h2><i class="fas fa-comments"></i> O'z fikringizni qoldiring</h2>
+                        <span class="comments-count" id="commentsCount">0 ta izoh</span>
+                    </div>
+                    
+                    <div class="comment-form">
+                        <div class="comment-avatar"><i class="fas fa-user"></i></div>
+                        <div class="comment-input-wrapper">
+                            <input type="text" id="commentName" placeholder="Ismingiz" maxlength="30" value="O'quvchi">
+                            <textarea id="commentText" placeholder="Kurs haqida fikringizni yozing..." rows="3" maxlength="500"></textarea>
+                            <div class="comment-form-footer">
+                                <span class="char-count"><span id="charCount">0</span>/500</span>
+                                <button class="btn-submit-comment" id="submitComment">
+                                    <i class="fas fa-paper-plane"></i><span>Yuborish</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-list" id="commentsList">
+                        <div class="comments-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Izohlar yuklanmoqda...</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ==================== NAVIGATSIYA ==================== -->
+                <div class="lesson-navigation">
+                    <div class="nav-buttons">
+                        <a href="../62/" class="btn-nav">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Oldingi dars</span>
+                        </a>
+                        <a href="../" class="btn-nav">
+                            <i class="fas fa-list"></i>
+                            <span>Darslar ro'yxati</span>
+                        </a>
+                        <a href="../../" class="btn-nav btn-primary">
+                            <span>Bosh sahifa</span>
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- ==================== SIDEBAR ==================== -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h4><i class="fas fa-list-ul"></i> Tahlil bo'limlari</h4>
+                    <ul class="sidebar-outline">
+                        <li><a href="#stats">Statistika</a></li>
+                        <li><a href="#analysis">Mavzular tahlili</a></li>
+                        <li><a href="#recommendations">Shaxsiy tavsiyalar</a></li>
+                        <li><a href="#next-steps">Keyingi qadamlar</a></li>
+                        <li><a href="#certificate">Sertifikat</a></li>
+                        <li><a href="#comments">Izohlar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h4><i class="fas fa-trophy"></i> Yutuqlaringiz</h4>
+                    <div style="text-align: center; padding: 16px 0;">
+                        <i class="fas fa-medal" style="font-size: 48px; color: #f59e0b;"></i>
+                        <p style="margin-top: 12px; font-weight: 600;">CSS Professional</p>
+                        <p style="font-size: 12px; color: #64748b;">63/63 dars yakunlandi</p>
+                    </div>
+                </div>
+            </aside>
+            
+        </div>
+    </main>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div class="toast-notification" id="toastNotification">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Nusxalandi!</span>
+    </div>
+    
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Learncode.uz | Ulug'bek Samigjonov - CSS To'liq Kurs</p>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script type="module" src="../../assets/firebase-config.js"></script>
+    <script type="module" src="../../assets/lesson-common.js"></script>
+    <script src="../script.js"></script>
+    
+    <!-- ==================== TAHLIL SCRIPTI ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Progress ma'lumotlarini localStorage dan olish
+            const stored = localStorage.getItem('learncode_progress');
+            const progress = stored ? JSON.parse(stored) : { html: [], css: [], js: [], bootstrap: [] };
+            const completedLessons = progress.css || [];
+            
+            // Statistika
+            const totalLessons = 63;
+            const completed = completedLessons.length;
+            const percentage = Math.round((completed / totalLessons) * 100);
+            
+            document.getElementById('completedLessons').textContent = completed;
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            
+            // Darajani aniqlash
+            let level = 'Boshlang\'ich';
+            if (percentage >= 90) level = 'Professional';
+            else if (percentage >= 75) level = 'Yuqori';
+            else if (percentage >= 50) level = 'O\'rta';
+            document.getElementById('skillLevel').textContent = level;
+            
+            // Mavzular bo'yicha tahlil
+            const categories = {
+                basics: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                boxModel: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                bgImages: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+                units: [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43],
+                fonts: [44, 45, 46, 47, 48],
+                advanced: [49, 50, 51, 52, 53, 54],
+                flexbox: [55, 56, 57, 58, 59, 60],
+                grid: [61, 62]
+            };
+            
+            function getCategoryScore(categoryLessons) {
+                const completedInCategory = categoryLessons.filter(l => completedLessons.includes(l.toString())).length;
+                return Math.round((completedInCategory / categoryLessons.length) * 100);
+            }
+            
+            function updateCategory(category, elementId, scoreId, skillsId, skillsList) {
+                const score = getCategoryScore(categories[category]);
+                document.getElementById(scoreId).textContent = score + '%';
+                document.getElementById(elementId).style.width = score + '%';
+                
+                const skillsHtml = skillsList.map(skill => {
+                    let skillClass = 'skill-not-started';
+                    if (skill.score >= 80) skillClass = 'skill-excellent';
+                    else if (skill.score >= 60) skillClass = 'skill-good';
+                    else if (skill.score >= 30) skillClass = 'skill-need-practice';
+                    
+                    return `<span class="skill-tag ${skillClass}">${skill.name}</span>`;
+                }).join('');
+                
+                document.getElementById(skillsId).innerHTML = skillsHtml;
+            }
+            
+            // Barcha kategoriyalarni yangilash
+            updateCategory('basics', 'basicsFill', 'basicsScore', 'basicsSkills', [
+                { name: 'Selektorlar', score: 80 },
+                { name: 'Specificity', score: 70 },
+                { name: 'Inheritance', score: 85 },
+                { name: 'Combinators', score: 65 }
+            ]);
+            
+            updateCategory('boxModel', 'boxModelFill', 'boxModelScore', 'boxModelSkills', [
+                { name: 'Box Model', score: 85 },
+                { name: 'Margin/Padding', score: 80 },
+                { name: 'Display', score: 75 },
+                { name: 'Positioning', score: 70 }
+            ]);
+            
+            updateCategory('bgImages', 'bgImagesFill', 'bgImagesScore', 'bgImagesSkills', [
+                { name: 'Background', score: 75 },
+                { name: 'Images', score: 80 },
+                { name: 'Gradient', score: 70 },
+                { name: 'Filter', score: 65 }
+            ]);
+            
+            updateCategory('units', 'unitsFill', 'unitsScore', 'unitsSkills', [
+                { name: 'px, %', score: 90 },
+                { name: 'em, rem', score: 75 },
+                { name: 'vh, vw', score: 80 },
+                { name: 'Media Queries', score: 70 }
+            ]);
+            
+            updateCategory('fonts', 'fontsFill', 'fontsScore', 'fontsSkills', [
+                { name: 'Google Fonts', score: 85 },
+                { name: '@font-face', score: 70 },
+                { name: 'Font xossalari', score: 75 }
+            ]);
+            
+            updateCategory('advanced', 'advancedFill', 'advancedScore', 'advancedSkills', [
+                { name: '2D Transforms', score: 80 },
+                { name: '3D Transforms', score: 60 },
+                { name: 'Transitions', score: 85 },
+                { name: 'Animations', score: 70 }
+            ]);
+            
+            updateCategory('flexbox', 'flexboxFill', 'flexboxScore', 'flexboxSkills', [
+                { name: 'display: flex', score: 90 },
+                { name: 'justify-content', score: 85 },
+                { name: 'align-items', score: 80 },
+                { name: 'flex', score: 75 }
+            ]);
+            
+            updateCategory('grid', 'gridFill', 'gridScore', 'gridSkills', [
+                { name: 'CSS Grid', score: 75 },
+                { name: 'BEM', score: 70 },
+                { name: 'Accessibility', score: 65 }
+            ]);
+            
+            // Zaif tomonlarni aniqlash va tavsiyalar
+            const weakCategories = [];
+            const categoryNames = {
+                basics: 'CSS Asoslari',
+                boxModel: 'Box Model va Display',
+                bgImages: 'Background va Rasmlar',
+                units: 'Units va RWD',
+                fonts: 'Fontlar',
+                advanced: 'Advanced CSS',
+                flexbox: 'Flexbox',
+                grid: 'Grid va Best Practices'
+            };
+            
+            for (const [cat, name] of Object.entries(categoryNames)) {
+                const score = getCategoryScore(categories[cat]);
+                if (score < 60) {
+                    weakCategories.push({ name, score, cat });
+                }
+            }
+            
+            // Tavsiyalar HTML
+            let recommendationsHtml = '';
+            
+            if (weakCategories.length > 0) {
+                weakCategories.forEach(cat => {
+                    const lessons = categories[cat.cat];
+                    const startLesson = lessons[0];
+                    const endLesson = lessons[lessons.length - 1];
+                    
+                    recommendationsHtml += `
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="recommendation-content">
+                                <h4>${cat.name} mavzusini takrorlang (${cat.score}%)</h4>
+                                <p>Bu mavzu bo'yicha bilimingiz pastroq. ${startLesson}-${endLesson} darslarni qayta ko'rib chiqishni tavsiya qilamiz.</p>
+                                <a href="../${startLesson}/" style="color: #3b82f6; text-decoration: none; margin-top: 8px; display: inline-block;">
+                                    <i class="fas fa-play-circle"></i> ${startLesson}-darsdan boshlash
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                recommendationsHtml = `
+                    <div class="recommendation-item">
+                        <div class="recommendation-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="recommendation-content">
+                            <h4>Ajoyib! Barcha mavzular yaxshi o'zlashtirilgan!</h4>
+                            <p>Siz CSS kursini mukammal darajada yakunladingiz. Endi JavaScript kursiga o'tish vaqti keldi!</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Qo'shimcha tavsiyalar
+            recommendationsHtml += `
+                <div class="recommendation-item">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="recommendation-content">
+                        <h4>Amaliyot qilishni davom eting</h4>
+                        <p>CSS ni mukammal egallash uchun doimiy amaliyot kerak. Frontend Mentor yoki CodePen da loyihalar yarating.</p>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="recommendation-content">
+                        <h4>JavaScript kursiga o'ting</h4>
+                        <p>CSS dan keyin mantiqiy qadam - JavaScript. Bu sizga interaktiv veb-saytlar yaratish imkonini beradi.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('recommendations').innerHTML = recommendationsHtml;
+            
+            // Sertifikat yaratish
+            document.getElementById('generateCertificate').addEventListener('click', function() {
+                const name = localStorage.getItem('commentName') || 'O\'quvchi';
+                const date = new Date().toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                // Sertifikat HTML
+                const certHtml = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>CSS Kurs Sertifikati - Learncode.uz</title>
+                        <style>
+                            body {
+                                font-family: 'Inter', sans-serif;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                min-height: 100vh;
+                                margin: 0;
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            }
+                            .certificate {
+                                width: 900px;
+                                padding: 60px;
+                                background: white;
+                                border-radius: 20px;
+                                box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+                                text-align: center;
+                                position: relative;
+                                border: 10px solid #f59e0b;
+                            }
+                            .certificate h1 {
+                                font-size: 48px;
+                                color: #1e293b;
+                                margin-bottom: 20px;
+                            }
+                            .certificate h2 {
+                                font-size: 32px;
+                                color: #3b82f6;
+                                margin-bottom: 30px;
+                            }
+                            .certificate p {
+                                font-size: 18px;
+                                color: #64748b;
+                                margin-bottom: 30px;
+                            }
+                            .student-name {
+                                font-size: 42px;
+                                font-weight: 700;
+                                color: #f59e0b;
+                                margin: 30px 0;
+                                text-transform: uppercase;
+                                letter-spacing: 2px;
+                            }
+                            .footer {
+                                margin-top: 50px;
+                                display: flex;
+                                justify-content: space-between;
+                                color: #64748b;
+                            }
+                            .logo {
+                                position: absolute;
+                                top: 30px;
+                                left: 30px;
+                                opacity: 0.1;
+                                font-size: 100px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="certificate">
+                            <div class="logo">🎓</div>
+                            <h1>Learncode.uz</h1>
+                            <h2>CSS To'liq Kurs</h2>
+                            <p>Ushbu sertifikat</p>
+                            <div class="student-name">${name}</div>
+                            <p>63 ta darsdan iborat CSS kursini muvaffaqiyatli yakunlaganligini tasdiqlaydi.</p>
+                            <p>Kurs davomida: CSS Asoslari, Box Model, Display, Positioning, Background, Rasmlar, Gradientlar, Units, RWD, Media Queries, Fontlar, Transforms, Transitions, Animations, Flexbox, CSS Grid va Best Practices mavzulari o'rganildi.</p>
+                            <div class="footer">
+                                <span>Sana: ${date}</span>
+                                <span>Ulug'bek Samigjonov - Learncode.uz</span>
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                `;
+                
+                // Sertifikatni yuklab olish
+                const blob = new Blob([certHtml], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `CSS_Sertifikat_${name.replace(/\s+/g, '_')}.html`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                showToast('Sertifikat yuklab olindi!', 'success');
+            });
+            
+            function showToast(message, type) {
+                const toast = document.getElementById('toastNotification');
+                const msg = document.getElementById('toastMessage');
+                if (toast && msg) {
+                    msg.textContent = message;
+                    toast.className = `toast-notification ${type} show`;
+                    setTimeout(() => toast.classList.remove('show'), 3000);
+                }
+            }
+            
+            console.log('%c🎉 CSS Kursi yakunlandi!', 'color: #f59e0b; font-weight: bold; font-size: 20px;');
+            console.log('%c📊 Tahlil yakunlandi. Tavsiyalarni ko\'ring!', 'color: #3b82f6; font-size: 14px;');
+        });
+    </script>
+</body>
+</html>
