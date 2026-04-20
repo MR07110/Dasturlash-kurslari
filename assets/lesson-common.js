@@ -52,7 +52,7 @@ function initResources() {
             e.preventDefault();
             const lessonUrl = `${window.location.origin}/${LessonConfig.course}/${LessonConfig.lessonId}/`;
             copyToClipboard(lessonUrl);
-            showToast('🔗 Dars linki nusxalandi!', 'success');
+            showToast(' Dars linki nusxalandi!', 'success');
         });
     }
     const youtubeBtn = document.getElementById('youtubeWatchBtn');
@@ -82,7 +82,7 @@ function initProgress() {
             updateProgressDisplay();
             showToast('✅ Dars yakunlandi!', 'success');
             if (parseInt(LessonConfig.lessonId) % 5 === 0) {
-                showToast(`🎯 ${LessonConfig.lessonId}-dars! Aralash testni topshirishni unutmang!`, 'info');
+                showToast(`🎯 ${LessonConfig.lessonId}-dars! Nazorat ishi testni topshirishni unutmang!`, 'info');
             }
             window.dispatchEvent(new Event('storage'));
         });
@@ -150,7 +150,7 @@ function loadComments() {
     console.log('commentsList elementi:', commentsList);
     
     if (!commentsList) {
-        console.error('❌ commentsList topilmadi!');
+        console.error(' commentsList topilmadi!');
         return;
     }
     
@@ -160,7 +160,7 @@ function loadComments() {
     const commentsRef = ref(rtdb, `comments/${lessonKey}`);
     
     onValue(commentsRef, (snapshot) => {
-        console.log('📦 Firebase dan ma\'lumot keldi');
+        console.log(' Firebase dan ma\'lumot keldi');
         console.log('Snapshot mavjudmi?', snapshot.exists());
         
         if (!snapshot.exists()) {
@@ -172,12 +172,12 @@ function loadComments() {
         
         const comments = [];
         snapshot.forEach(c => {
-            console.log('📝 Izoh:', c.val());
+            console.log(' Izoh:', c.val());
             comments.push({ id: c.key, ...c.val() });
         });
         comments.reverse();
         
-        console.log(`✅ ${comments.length} ta izoh yuklandi`);
+        console.log(` ${comments.length} ta izoh yuklandi`);
         
         if (commentsCount) commentsCount.textContent = `${comments.length} ta izoh`;
         
@@ -185,7 +185,7 @@ function loadComments() {
         commentsList.innerHTML = '';
         
         comments.forEach(c => {
-            console.log('➕ Izoh qo\'shilmoqda:', c.name, '-', c.text.substring(0, 20));
+            console.log(' Izoh qo\'shilmoqda:', c.name, '-', c.text.substring(0, 20));
             const d = document.createElement('div');
             d.className = 'comment-item';
             d.innerHTML = `
@@ -203,7 +203,7 @@ function loadComments() {
         
         console.log('✅ Izohlar DOM ga qo\'shildi. Elementlar soni:', commentsList.children.length);
     }, (error) => {
-        console.error('❌ Firebase xatolik:', error);
+        console.error(' Firebase xatolik:', error);
     });
 }
 function setupCommentForm() {
@@ -227,7 +227,7 @@ function setupCommentForm() {
         submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
         if (await addComment(name || 'O\'quvchi', text)) {
             textInput.value = ''; if (charCount) charCount.textContent = '0';
-            showToast('💬 Izohingiz qo\'shildi!', 'success');
+            showToast(' Izohingiz qo\'shildi!', 'success');
             if (name) localStorage.setItem('commentName', name);
         } else showToast('Xatolik yuz berdi.', 'error');
         submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Yuborish';
